@@ -1,0 +1,17 @@
+{
+  "manifestVersion": 2,
+  "id": "openrouter-key-usage",
+  "name": "OpenRouter Key Usage",
+  "description": "See spend, budget limits, local history and individual request costs with a standard OpenRouter key.",
+  "version": "1.0.0",
+  "engines": { "orca": ">=1.4.271" },
+  "execution": "trusted-worker",
+  "pluginApi": 1,
+  "main": "worker.mjs",
+  "contributes": {
+    "panels": [{ "id": "dashboard", "title": "OpenRouter Key Usage", "icon": "bar-chart-3", "entry": "panel/index.html" }],
+    "commands": [{ "id": "usage.refresh", "title": "Refresh OpenRouter Key Usage" }],
+    "statusBarItems": [{ "id": "spend", "text": "OpenRouter", "icon": "gauge", "command": "usage.refresh", "tooltip": "Refresh this key's spending" }]
+  },
+  "capabilities": [{ "kind": "secrets:own" }, { "kind": "storage:own" }]
+}

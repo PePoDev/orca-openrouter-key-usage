@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenRouter Key Usage</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body><main>
+  <header><div><p class="brand">OpenRouter</p><h1>Key usage</h1></div><button id="refresh" hidden>Refresh</button></header>
+  <p id="stamp" class="muted"></p>
+  <p id="feedback" role="status" aria-live="polite">Loading key settings…</p>
+  <p id="warning" role="alert" hidden></p>
+  <nav aria-label="Dashboard views" hidden>
+    <button data-view="overview" aria-pressed="true">Overview</button>
+    <button data-view="history" aria-pressed="false">History</button>
+    <button data-view="requests" aria-pressed="false">Requests</button>
+    <button data-view="settings" aria-pressed="false">Key</button>
+  </nav>
+  <section id="overview" hidden aria-label="Overview">
+    <div class="balance"><div id="leadLabel" class="muted"></div><strong id="leadValue"></strong><div id="leadInfo"></div></div>
+    <h2>Spending</h2><div id="periods"></div>
+    <h2>Applicable budgets</h2><div id="budgets"></div>
+    <h2>Key details</h2><div id="keyInfo"></div>
+  </section>
+  <section id="history" hidden><h2>Daily spending</h2>
+    <p class="muted">Last observed spend per UTC day. Days Orca was offline can be missing or incomplete.</p>
+    <label for="range">Show</label> <select id="range"><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option></select>
+    <div id="trend" aria-hidden="true"></div><div id="ledger"></div><button id="export">Export history as CSV</button>
+  </section>
+  <section id="requests" hidden><h2>Request details</h2>
+    <p class="muted">Paste a generation ID from an OpenRouter response to see its model, tokens and cost. This list contains only the requests you look up here.</p>
+    <form id="lookup"><label for="gen">Generation ID</label><input id="gen" placeholder="gen-…" required maxlength="164" autocomplete="off"><button>Look up request</button></form>
+    <div id="requestList"></div>
+  </section>
+  <section id="settings" hidden><h2 id="connectTitle">Connect your API key</h2>
+    <form id="connect"><label for="token">OpenRouter API key</label>
+      <input id="token" type="password" placeholder="sk-or-…" required maxlength="310" spellcheck="false" autocomplete="off" autocapitalize="none">
+      <p class="muted" id="keyHint">Use your regular OpenRouter key. Orca stores it encrypted on this device and sends it only to OpenRouter.</p>
+      <button id="save">Connect key</button>
+    </form>
+    <details id="remove" hidden><summary>Disconnect key</summary><p>This clears the saved key, spending history and request lookups on this device.</p><button id="forget">Disconnect and clear history</button></details>
+  </section>
+</main><script src="./dashboard.js" defer></script></body>
+</html>
