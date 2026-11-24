@@ -2,6 +2,10 @@
 
 A desktop Orca sidebar and status-bar meter for one regular OpenRouter API key. Enter the key in the panel's **Connect key** form. It is kept in Orca's encrypted secret store. The worker sends it only to OpenRouter over HTTPS and rejects redirects.
 
+## Install
+
+With Orca 1.4.271 or later, run `orca plugin install PePoDev/orca-openrouter-key-usage` and review the permissions. Open **OpenRouter Key Usage** in the sidebar to connect your key.
+
 ## Dashboard
 
 - **Overview** shows OpenRouter credit spend and external BYOK spend for today, this week (Monday–Sunday), this month and all time. Periods use UTC. The budget section shows applicable key, member or workspace limits reported for your key, remaining amounts, reset times, expiry and free-model request allowances. A shared budget can include spending by others.
